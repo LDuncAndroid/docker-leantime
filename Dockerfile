@@ -41,4 +41,4 @@ RUN sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/httpd.conf && \
 
 # Expose port LEAN_SERVER_PROXY_HOST_PORT and start php-fpm server
 ENTRYPOINT ["/start.sh"]
-EXPOSE 80
+EXPOSE ${LEAN_HTTP_CONTAINER_PORT:-80}
