@@ -11,6 +11,8 @@ services:
       - MYSQL_DATABASE
       - MYSQL_USER
       - MYSQL_PASSWORD
+    volumes:
+      - db_data:/var/lib/mysql
     ports:
       - "${MYSQL_LEANTIME_HOST_PORT:-3306}:${MYSQL_LEANTIME_CONTAINER_PORT:-3306}"
     command: ${MYSQL_LEANTIME_COMMAND:-"--character-set-server=utf8 --collation-server=utf8_unicode_ci"}
@@ -27,3 +29,5 @@ services:
       - "${LEAN_HTTP_HOST_PORT:-80}:${LEAN_HTTP_CONTAINER_PORT:-80}"
     depends_on:
       - db
+volumes:
+  db_data:
